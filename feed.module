@@ -1,0 +1,11 @@
+<?php
+
+function feed_menu() {
+    $items = array();
+    $items['feed/articles'] = array(
+        'title' => t('My Feed'),
+        'page callback' => 'feed_callback',
+        'access callback' => TRUE,
+    );
+    return $items;
+}
