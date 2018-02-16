@@ -1,0 +1,5 @@
+name = Feed
+description = Displays a feed of articles in descending chronological order.
+package = Custom Modules
+core = 7.x
+version = "7.56"
