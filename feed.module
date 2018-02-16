@@ -9,3 +9,23 @@ function feed_menu() {
     );
     return $items;
 }
+
+
+function feed_callback() {
+    $query = db_select('node', 'n');
+    $query->fields('n', array(
+            'nid',
+            'title',
+            'created',
+            'changed',
+            'status',
+            'uid'
+        ))
+        ->orderBy('created', 'DESC')
+        ->condition('type', 'article');
+    $query->join('users', 'u', 'n.uid = u.uid');
+    $query->addField('u', 'name');
+    $data = $query->execute()->fetchAll();
+
+    return drupal_json_output($data);
+}
